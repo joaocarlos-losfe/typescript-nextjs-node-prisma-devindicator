@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//modelo de usuário com relação 1 para muitos (1 usuario possui muitos posts)
+model User {
+  id          String    @id     @default(uuid())
+  created_at  DateTime  @default(now())
+
+  username    String    @unique @db.VarChar(10)
+  email       String    @unique @db.VarChar(100)
+  pass        String  
+
+  posts Post[]
+}
+
+model Post{
+  id          String    @id     @default(uuid())
+  created_at  DateTime  @default(now())
+
+  title       String    @unique @db.VarChar(50)
+  description String    @unique @db.VarChar(250)
+  font_url    String    @unique
+  tags        String
+
+  posted_by   User      @relation(fields: [user_id], references: [id])
+  user_id     String
+}
+
+model UserContact{
+  email       String @id @unique
+  full_name   String @unique
+
+  messages    Message[]
+}
+
+model Message{
+  id          String    @id     @default(uuid())
+  contact_at  DateTime  @default(now())
+
+  message     String    @db.VarChar(50)
+  answer      String    @default("")
+
+  message_by UserContact @relation(fields: [email_id], references: [email])
+  email_id String
+
+}

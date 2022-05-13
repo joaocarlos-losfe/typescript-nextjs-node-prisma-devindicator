@@ -4,9 +4,13 @@ require('dotenv').config();
 
 const app = express();
 
+import { router } from "./routes";
+
 app.use(cors({origin: '*'}));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+
+app.use(router);
 
 app.get('/api/', (req, res)=>{
     

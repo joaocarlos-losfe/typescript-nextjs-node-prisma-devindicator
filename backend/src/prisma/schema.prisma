@@ -17,6 +17,8 @@ model User {
   pass        String  
 
   posts Post[]
+
+  @@map("users")
 }
 
 model Post{
@@ -30,6 +32,8 @@ model Post{
 
   posted_by   User      @relation(fields: [user_id], references: [id])
   user_id     String
+
+  @@map("posts")
 }
 
 model UserContact{
@@ -37,6 +41,8 @@ model UserContact{
   full_name   String @unique
 
   messages    Message[]
+
+  @@map("user_contacts")
 }
 
 model Message{
@@ -48,5 +54,7 @@ model Message{
 
   message_by UserContact @relation(fields: [email_id], references: [email])
   email_id String
+
+  @@map("messages")
 
 }

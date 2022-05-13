@@ -3,7 +3,7 @@ import { prismaClient } from "../database/prismaClient";
 
 import { hash } from "bcrypt";
 
-export class CreateCategoryController {
+export class CreateUserController {
     async handle(req: Request, res: Response) {
       try{
 

@@ -1,9 +1,9 @@
 import { Router } from "express";
 const router = Router();
 
-import { CreateCategoryController } from "./controllers/CreateUserController";
+import { CreateUserController } from "./controllers/CreateUserController";
 
-const UserModel = new CreateCategoryController()
+const UserModel = new CreateUserController()
 
 router.post("/api/user/add", UserModel.handle);
 

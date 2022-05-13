@@ -30,7 +30,7 @@ model Post{
   font_url    String    @unique
   tags        String
 
-  posted_by   User      @relation(fields: [user_id], references: [id])
+  posted_by   User      @relation(fields: [user_id], references: [id], onDelete: Cascade)
   user_id     String
 
   @@map("posts")
@@ -52,7 +52,7 @@ model Message{
   message     String    @db.VarChar(50)
   answer      String    @default("")
 
-  message_by UserContact @relation(fields: [email_id], references: [email])
+  message_by UserContact @relation(fields: [email_id], references: [email], onDelete: Cascade)
   email_id String
 
   @@map("messages")

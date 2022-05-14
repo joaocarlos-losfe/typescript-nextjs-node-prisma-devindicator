@@ -5,6 +5,7 @@ import { hash } from "bcrypt";
 
 export class CreateUserController {
     async handle(req: Request, res: Response) {
+      
       try{
 
         let { username, email, pass } = req.body;

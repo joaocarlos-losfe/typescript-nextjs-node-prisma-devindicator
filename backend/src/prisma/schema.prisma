@@ -7,7 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-//modelo de usuário com relação 1 para muitos (1 usuario possui muitos posts)
+
 model User {
   id          String    @id     @default(uuid())
   created_at  DateTime  @default(now())
